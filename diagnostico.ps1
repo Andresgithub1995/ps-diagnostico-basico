@@ -190,7 +190,7 @@ function Get-DiskSummary {
 function Get-NetworkSummary {
   Safe-Invoke -Name "NetworkSummary" -Script {
     $adapters = Get-NetAdapter -ErrorAction SilentlyContinue |
-      Sort-Object Status -Descending, Name |
+      Sort-Object -Property Status, Name -Descending |
       Select-Object Name, InterfaceDescription, Status, LinkSpeed, MacAddress
 
     $ipconfig = Get-NetIPConfiguration -ErrorAction SilentlyContinue |
